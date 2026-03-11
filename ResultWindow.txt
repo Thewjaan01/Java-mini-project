@@ -1,0 +1,29 @@
+class ResultWindow extends JFrame {
+    public ResultWindow(String message) {
+        setTitle("Your Result");
+        setSize(300, 320);
+        setLayout(new BorderLayout(10, 10));
+
+        JLabel resultLabel = new JLabel(message, SwingConstants.CENTER);
+        resultLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        resultLabel.setBorder(BorderFactory.createEmptyBorder(20, 0, 10, 0));
+        add(resultLabel, BorderLayout.NORTH);
+
+        JLabel infoLabel = new JLabel("<html><div style='text-align: center;'><hr>"
+                + "<b>BMI Reference Values:</b><br>"
+                + "Underweight: less than 18.5<br>"
+                + "Normal: 18.5 – 24.9<br>"
+                + "Overweight: 25.0 – 29.9<br>"
+                + "Obese: 30.0 or more"
+                + "</div></html>", SwingConstants.CENTER);
+        infoLabel.setForeground(Color.DARK_GRAY);
+        add(infoLabel, BorderLayout.CENTER);
+
+        JButton closeBtn = new JButton("Close");
+        closeBtn.addActionListener(e -> dispose());
+        add(closeBtn, BorderLayout.SOUTH);
+
+        setLocationRelativeTo(null);
+        setVisible(true);
+    }
+}

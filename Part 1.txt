@@ -1,0 +1,44 @@
+// Part 1
+
+import javax.swing.*;
+import java.awt.*;
+
+public class Main {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("BMI Calculator");
+        frame.setSize(350, 400);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(8, 8, 8, 8);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+
+        // --- ROW 0: HEADING ---
+        JLabel heading = new JLabel("BMI CALCULATOR", SwingConstants.CENTER);
+        heading.setFont(new Font("Arial", Font.BOLD, 22));
+        gbc.gridx = 0; gbc.gridy = 0;
+        gbc.gridwidth = 2;
+        frame.add(heading, gbc);
+
+        // --- ROW 1: SELECT UNITS ---
+        JRadioButton metric = new JRadioButton("Metric (kg, m)", true);
+        JRadioButton english = new JRadioButton("English (lb, in)");
+        ButtonGroup group = new ButtonGroup();
+        group.add(metric); group.add(english);
+
+        gbc.gridwidth = 1;
+        gbc.gridy = 1;
+        gbc.gridx = 0; frame.add(metric, gbc);
+        gbc.gridx = 1; frame.add(english, gbc);
+
+        // --- ROW 2 & 3: INPUTS ---
+        JLabel weightLabel = new JLabel("Weight (kg):");
+        gbc.gridx = 0; gbc.gridy = 2; frame.add(weightLabel, gbc);
+        JTextField weightField = new JTextField(10);
+        gbc.gridx = 1; frame.add(weightField, gbc);
+
+        JLabel heightLabel = new JLabel("Height (m):");
+        gbc.gridx = 0; gbc.gridy = 3; frame.add(heightLabel, gbc);
+        JTextField heightField = new JTextField(10);
+        gbc.gridx = 1; frame.add(heightField, gbc);
+        

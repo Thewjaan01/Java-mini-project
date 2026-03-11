@@ -1,0 +1,33 @@
+// Part 2
+
+  // --- UNIT CONVERSION LOGIC ---
+        metric.addActionListener(e -> {
+            try {
+                if (!weightField.getText().isEmpty()) {
+                    double val = Double.parseDouble(weightField.getText());
+                    weightField.setText(String.format("%.2f", val / 2.20462)); // lb to kg
+                }
+                if (!heightField.getText().isEmpty()) {
+                    double val = Double.parseDouble(heightField.getText());
+                    heightField.setText(String.format("%.2f", val / 39.3701)); // in to m
+                }
+            } catch (Exception ex) {}
+            weightLabel.setText("Weight (kg):");
+            heightLabel.setText("Height (m):");
+        });
+
+        english.addActionListener(e -> {
+            try {
+                if (!weightField.getText().isEmpty()) {
+                    double val = Double.parseDouble(weightField.getText());
+                    weightField.setText(String.format("%.2f", val * 2.20462)); // kg to lb
+                }
+                if (!heightField.getText().isEmpty()) {
+                    double val = Double.parseDouble(heightField.getText());
+                    heightField.setText(String.format("%.2f", val * 39.3701)); // m to in
+                }
+            } catch (Exception ex) {}
+            weightLabel.setText("Weight (lb):");
+            heightLabel.setText("Height (in):");
+        });
+        

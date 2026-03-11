@@ -1,0 +1,24 @@
+
+
+ JButton calculateBtn = new JButton("Calculate");
+        gbc.gridx = 0; gbc.gridy = 4; gbc.gridwidth = 2;
+        frame.add(calculateBtn, gbc);
+
+        calculateBtn.addActionListener(e -> {
+            try {
+                double w = Double.parseDouble(weightField.getText());
+                double h = Double.parseDouble(heightField.getText());
+                double bmi = metric.isSelected() ? w / (h * h) : (w * 703) / (h * h);
+
+                String category = (bmi < 18.5) ? "Underweight" : (bmi < 25) ? "Normal" : (bmi < 30) ? "Overweight" : "Obese";
+                new ResultWindow(String.format("BMI: %.2f (%s)", bmi, category));
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(frame, "Please enter valid numbers!");
+            }
+        });
+
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+}
+
